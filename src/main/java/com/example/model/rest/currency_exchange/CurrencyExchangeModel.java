@@ -1,11 +1,11 @@
-package com.example.entity.currency_exchange;
+package com.example.model.rest.currency_exchange;
 
 import lombok.Data;
 
 import java.math.BigDecimal;
 
 @Data
-public class CurrencyExchange {
+public class CurrencyExchangeModel {
 
     private String from;
     private String to;
