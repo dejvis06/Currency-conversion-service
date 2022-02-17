@@ -1,19 +1,14 @@
-package com.example.entity;
+package com.example.entity.currency_exchange;
 
-
-import lombok.Builder;
 import lombok.Data;
 
 import java.math.BigDecimal;
 
 @Data
-@Builder
-public class CurrencyConversion {
+public class CurrencyExchange {
 
     private String from;
     private String to;
     private BigDecimal conversionMultiple;
-    private BigDecimal quantity;
-    private BigDecimal totalCalculatedAmount;
     private String environment;
 }
