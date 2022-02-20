@@ -35,7 +35,9 @@ public class CurrencyConversionController {
     public ResponseEntity<CurrencyConversion> calculateCurrencyConversionFeign(@PathVariable String from, @PathVariable String to, @PathVariable BigDecimal quantity) {
 
         CurrencyExchangeModel currencyExchange = currencyExchangeProxy.retrieveExchangeValue(from, to).getBody();
-        CurrencyConversion currencyConversion = CurrencyConversion.builder().from(currencyExchange.getFrom()).to(currencyExchange.getTo()).quantity(quantity).build();
+        CurrencyConversion currencyConversion = CurrencyConversion.builder()
+                .from(currencyExchange.getFrom()).to(currencyExchange.getTo()).quantity(quantity).environment(currencyExchange.getEnvironment())
+                .build();
 
         return new ResponseEntity<>(currencyConversion, HttpStatus.OK);
     }
