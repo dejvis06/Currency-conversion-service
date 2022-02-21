@@ -26,8 +26,10 @@ public class CurrencyConversionController {
 
         ResponseEntity<CurrencyExchangeModel> currencyExchangeResponseEntity = new RestTemplate().getForEntity("http://localhost:8000/currency-exchange/from/USD/to/INR", CurrencyExchangeModel.class);
         CurrencyExchangeModel currencyExchange = currencyExchangeResponseEntity.getBody();
+        CurrencyConversion currencyConversion = CurrencyConversion.builder()
+                .from(currencyExchange.getFrom()).to(currencyExchange.getTo()).quantity(quantity).environment(currencyExchange.getEnvironment())
+                .build();
 
-        CurrencyConversion currencyConversion = CurrencyConversion.builder().from(currencyExchange.getFrom()).to(currencyExchange.getTo()).quantity(quantity).build();
         return new ResponseEntity<>(currencyConversion, HttpStatus.OK);
     }
 
